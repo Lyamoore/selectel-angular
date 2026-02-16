@@ -11,4 +11,8 @@ import { DataService } from '../../services/data';
 })
 export class ListSelection {
   protected dataService = inject(DataService);
+
+  trackBySectionType(_index: number, section: { type: string }) {
+    return section.type;
+  }
 }

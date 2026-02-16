@@ -8,7 +8,7 @@
 
 <div class="list-layout">
   <aside class="list-sidebar">
-    <button *ngFor="let section of dataService.sections()"
+    <button *ngFor="let section of dataService.sections(); trackBy: trackBySectionType"
             type="button"
             class="list-sidebar__item"
             [class.list-sidebar__item--active]="dataService.selectedTypeName() === section.type"

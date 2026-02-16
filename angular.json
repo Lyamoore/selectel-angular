@@ -16,6 +16,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/selectel-angular",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -30,6 +31,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/selectel-angular/",
               "budgets": [
                 {
                   "type": "initial",

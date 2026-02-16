@@ -1,1 +1,30 @@
-<p>list-selection works!</p>
+<header style="display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #ccc;">
+  <div>Раздел: {{ dataService.selectedTypeName() }}</div>
+  <div>
+    <span>Выбрано пунктов: {{ dataService.selectedCount() }} </span>
+    <span>Общее значение: {{ dataService.totalValue() }}</span>
+  </div>
+</header>
+
+<div style="display: flex; height: 100vh;">
+  <aside style="width: 200px; border-right: 1px solid #ccc; padding: 10px;">
+    <div *ngFor="let section of dataService.sections()"
+         (click)="dataService.selectType(section.type)"
+         [style.font-weight]="dataService.selectedTypeName() === section.type ? 'bold' : 'normal'"
+         style="cursor: pointer; margin-bottom: 10px;">
+      {{ section.type }}
+    </div>
+  </aside>
+
+  <main style="flex: 1; padding: 20px; background: #f5f5f5;">
+    <div *ngFor="let item of dataService.activeSection()?.items" style="margin-bottom: 15px; display: flex; gap: 10px;">
+      <input type="checkbox"
+             [checked]="item.selected"
+             (change)="dataService.toggleItem(item.id)">
+      <div>
+        <div>{{ item.name }}</div>
+        <div style="color: gray; font-size: 0.8em;">Value: {{ item.value }}</div>
+      </div>
+    </div>
+  </main>
+</div>
